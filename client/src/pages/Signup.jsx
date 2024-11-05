@@ -19,7 +19,7 @@ const Signup = () => {
     e.preventDefault();
     const { name, email, password, address, city, postalCode, country } =
       credentials;
-    const response = await fetch("http://localhost:5555/api/user/createUser", {
+    const response = await fetch("https://ecommerce-zoroz-backend.onrender.com/api/user/createUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

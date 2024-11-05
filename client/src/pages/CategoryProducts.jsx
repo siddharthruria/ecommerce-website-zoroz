@@ -10,7 +10,7 @@ const CategoryProducts = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5555/api/product/products?category=${category}`
+          `https://ecommerce-zoroz-backend.onrender.com/api/product/products?category=${category}`
         );
         const data = await response.json();
         if (data.success) {

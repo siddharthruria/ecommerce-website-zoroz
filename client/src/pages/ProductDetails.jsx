@@ -11,7 +11,7 @@ const ProductDetails = () => {
     const fetchProductDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5555/api/product/?id=${id}`
+          `https://ecommerce-zoroz-backend.onrender.com/api/product/?id=${id}`
         );
         const data = await response.json();
         console.log(data);
