@@ -6,12 +6,23 @@ const cors = require("cors");
 
 const app = express();
 
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
-};
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://ecommerce-zoroz.onrender.com",
+];
 
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
