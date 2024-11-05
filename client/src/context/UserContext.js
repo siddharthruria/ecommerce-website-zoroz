@@ -23,7 +23,6 @@ const UserProvider = ({ children }) => {
       }
       const userData = await response.json();
       setUser(userData.user);
-      navigate("/");
     } catch (error) {
       setToken(null);
       setUser(null);

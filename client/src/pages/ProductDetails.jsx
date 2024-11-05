@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -23,6 +25,12 @@ const ProductDetails = () => {
 
     fetchProductDetails();
   }, [id]);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    alert(`${product.productName} has been added to the cart.`);
+  };
+
   return (
     <div className="container mt-5">
       <h3>
@@ -33,6 +41,9 @@ const ProductDetails = () => {
       <br />
       <br />
       <img src={product?.image} alt={product?.productName} />
+      <button style={{ marginLeft: "50px" }} onClick={handleAddToCart}>
+        add to cart
+      </button>
     </div>
   );
 };

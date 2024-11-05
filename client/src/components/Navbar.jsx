@@ -81,17 +81,27 @@ const Navbar = () => {
                 </Link>
               </form>
             ) : (
-              <Link
-                to="/login"
-                style={{ textDecoration: "none" }}
-                type="button"
-                className="buttons btn btn-primary"
-                onClick={() => {
-                  logout();
-                }}
-              >
-                logout
-              </Link>
+              <div>
+                <Link
+                  to="/cart"
+                  style={{ marginRight: "0.7vw", textDecoration: "none" }}
+                  type="button"
+                  className="buttons btn btn-primary"
+                >
+                  go to cart
+                </Link>
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none" }}
+                  type="button"
+                  className="buttons btn btn-primary"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  logout
+                </Link>
+              </div>
             )}
           </div>
         </div>
