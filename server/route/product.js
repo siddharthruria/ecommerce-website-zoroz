@@ -25,13 +25,37 @@ router.get("/getAllProducts", async (_req, res) => {
 
 // ------------------------------- ROUTE 2 -------------------------------
 
+// route (/api/product/products)
+
+// GET -> get all products category wise
+
+router.get("/products", async (req, res) => {
+  try {
+    const category = req.query.category;
+    const products = category
+      ? await Product.find({ category }) // find by category if specified
+      : await Product.find(); // otherwise, find all products
+
+    res.status(200).json({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("internal server error :/");
+  }
+});
+
+// ------------------------------- ROUTE 3 -------------------------------
+
 // route (/api/product/:id)
 
-// GET -> get all products
+// GET -> get specific product details
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const id = req.query.id;
+    const product = await Product.findById(id);
     if (!product) {
       return res.status(404).json({
         success: false,
@@ -43,7 +67,7 @@ router.get("/:id", async (req, res) => {
       product,
     });
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return res.status(500).send("internal server error :/");
   }
 });

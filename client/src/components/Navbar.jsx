@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
-  const { logout, getCookie } = useContext(UserContext);
+  const { token, logout, getCookie } = useContext(UserContext);
+  const categories = ["jordan", "hoodies", "corset", "apple", "skin"];
 
   return (
     <>
@@ -35,6 +36,26 @@ const Navbar = () => {
                   home
                 </Link>
               </li>
+              {token && (
+                <div className="categories">
+                  {categories.map((category) => (
+                    <Link
+                      key={category}
+                      to={`/products/category/${category}`}
+                      style={{
+                        marginInline: "15px",
+                        marginRight: "15px",
+                        // display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "row",
+                        alignItems: "center",
+                      }}
+                    >
+                      {category}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </ul>
             <div
               className="navbar-buttons"

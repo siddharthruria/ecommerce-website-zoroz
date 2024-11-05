@@ -1,0 +1,30 @@
+.home-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  } */
+
+.product-card {
+  /* width: 100px; */
+  text-align: center;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-card {
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 1rem;
+  width: calc(40% - 0px);
+  margin: 50px;
+}
